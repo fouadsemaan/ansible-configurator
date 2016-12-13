@@ -1,6 +1,8 @@
 ---
-- name: install node and npm
-  command: n 6.9.2
+- name: install node
+  command: /usr/local/n/bin/n 6.9.2
+- name: install npm
+  command: curl -0 -L https://npmjs.org/install.sh | sudo sh
 - name: Create a temp directory to run the script
   #become: true
   #become_user: root
