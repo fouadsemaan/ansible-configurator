@@ -14,6 +14,11 @@
   #become: true
   #become_user: root
   copy: src=npm_config_client.js dest={{result.stdout}} mode=0777
+- name: asdfasdf
+  command: npm -version
+  register: res2
+- name: debug
+  debug: msg="{{res2.stdout}}"
 # - name: npm init
 #  become: true
 #  become_user: root
