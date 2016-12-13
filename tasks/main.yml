@@ -14,10 +14,10 @@
   #become: true
   #become_user: root
   copy: src=npm_config_client.js dest={{result.stdout}} mode=0777
-- name: npm init
+# - name: npm init
 #  become: true
 #  become_user: root
-  command: npm init -y chdir={{result.stdout}}
+#  command: npm init -y chdir={{result.stdout}}
 - name: Download npm libraries
   #become: true
   #become_user: root
