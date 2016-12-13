@@ -32,9 +32,9 @@
   #become_user: root
   command: "{{item}}"
   with_items:
-    - npm install cloud-config-client  -g
-    - npm install minimist -g
-    - npm install mkdirp -g
-    - npm install handlebars -g
+    - npm install --prefix {{result.stdout}} cloud-config-client  --save
+    - npm install --prefix {{result.stdout}} minimist --save
+    - npm install --prefix {{result.stdout}} mkdirp --save
+    - npm install --prefix {{result.stdout}} handlebars --save
 - name: Execute the script
   command: node {{result.stdout}}/npm_config_client.js --folder '{{dir}}' --application_name '{{application_name}}' --properties_file '{{properties_file}}' --template '{{template}}' --config_server_ip '{{config_server_ip}}'
