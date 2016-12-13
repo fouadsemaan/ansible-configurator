@@ -11,6 +11,9 @@
 - name: Transfer the script
   copy: src=npm_config_client.js dest={{result.stdout}} mode=0777
   become: true
+- name: npm init
+  become: true
+  command: npm init -y chdir={{result.stdout}}
 - name: Download npm libraries
   become: true
   command: "{{item}}"
