@@ -30,4 +30,4 @@
     - npm install --prefix {{result.stdout}} mkdirp --save
     - npm install --prefix {{result.stdout}} handlebars --save
 - name: Execute the script
-  command: /usr/local/n/bin/n {{result.stdout}}/npm_config_client.js --folder '{{dir}}' --application_name '{{application_name}}' --properties_file '{{properties_file}}' --template '{{template}}' --config_server_ip '{{config_server_ip}}'
+  command: node {{result.stdout}}/npm_config_client.js --folder '{{dir}}' --application_name '{{application_name}}' --properties_file '{{properties_file}}' --template '{{template}}' --config_server_ip '{{config_server_ip}}'
