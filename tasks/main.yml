@@ -1,26 +1,26 @@
 ---
 - name: Create a temp directory to run the script
-  become: true
-  become_user: root
+  #become: true
+  #become_user: root
   command: mktemp -d
   register: result
 - name: debug
   debug: msg="{{result.stdout}}/node_modules"
 - name: Create node_modules dir
-  become: true
-  become_user: root
+  #become: true
+  #become_user: root
   file: path={{result.stdout}}/node_modules state=directory
 - name: Transfer the script
-  become: true
-  become_user: root
+  #become: true
+  #become_user: root
   copy: src=npm_config_client.js dest={{result.stdout}} mode=0777
 #- name: npm init
 #  become: true
 #  become_user: root
 #  command: npm init -y chdir={{result.stdout}}
 - name: Download npm libraries
-  become: true
-  become_user: root
+  #become: true
+  #become_user: root
   command: "{{item}}"
   with_items:
     - npm install --prefix {{result.stdout}} cloud-config-client  --save
