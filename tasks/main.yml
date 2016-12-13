@@ -1,6 +1,6 @@
 ---
 - name: install node and npm
-  shell: /usr/local/n/bin/n 6.9.2
+  command: n 6.9.2
 - name: Create a temp directory to run the script
   #become: true
   #become_user: root
