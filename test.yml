@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  vars:
+    - dir: /home/fsemaan/utilities/spark-2.0.2-bin-hadoop2.7/conf
+    - application_name: spark
+    - properties_file: spark-env.sh
+    - template: export
+    - config_server_ip: http://ubuntu4:80
+  roles:
+    - role: '{{playbook_dir}}'

@@ -1,0 +1,23 @@
+---
+- name: Create a temp directory to run the script
+  command: mktemp -d
+  register: result
+  become: true
+- name: debug
+  debug: msg="{{result.stdout}}/node_modules"
+- name: Create node_modules dir
+  file: path={{result.stdout}}/node_modules state=directory
+  become: true
+- name: Transfer the script
+  copy: src=npm_config_client.js dest={{result.stdout}} mode=0777
+  become: true
+- name: Download npm libraries
+  become: true
+  command: "{{item}}"
+  with_items:
+    - npm install --prefix {{result.stdout}} cloud-config-client  --save
+    - npm install --prefix {{result.stdout}} minimist --save
+    - npm install --prefix {{result.stdout}} mkdirp --save
+    - npm install --prefix {{result.stdout}} handlebars --save
+- name: Execute the script
+  command: node {{result.stdout}}/npm_config_client.js --folder '{{dir}}' --application_name '{{application_name}}' --properties_file '{{properties_file}}' --template '{{template}}' --config_server_ip '{{config_server_ip}}'
