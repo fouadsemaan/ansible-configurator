@@ -1,7 +1,14 @@
-username.rolename
+fouadsemaan.configurator
 =========
 
-A configurator tool to extract properties from Spring Boot Config Server to startup your application.
+A configurator tool which will install the application-configurator node module. It will also install node and npm to run the module.
+
+After installation, a typical entrypoint command can be found in the [application-configurator](https://www.npmjs.com/package/application-configurator) readme section.
+
+```js
+const client = require("application-configurator");
+client.properties_extractor("/opt/spark/conf", "spark", "http://configserver.myhost.com:8889", "spark-env.sh", "export")
+```
 
 Requirements
 ------------
@@ -24,11 +31,7 @@ Example Playbook
 ```yml
 - hosts: servers
   vars:
-    - dir: /home/semaanfouad/myserver/properties
-    - application_name: myserver 
-    - properties_file: initMyServer.sh 
-    - template: export
-    - config_server_ip: myConfigServer 
+    - configurator_version: 1.0.0 
   roles:
     - fouadsemaan.configurator
 ```
