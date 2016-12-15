@@ -1,6 +1,3 @@
-#---
-#dir: /path/to/spark/config/location 
-#application_name: application_name -> application name attributed to properties on the config server for the application in question
-#properties_file: filename -> filename which will contain resulting properties, i.e. application.properties or init.sh
-#template: export -> either store properties as export variables in the form of 'export attrib1=val1' or properties in the form of 'attrib1	val1'
-#config_server_ip: config_server_name -> name of config server where to fetch properties, i.e. http://configserver:8000 or http://configserver or configserver 
+---
+configurator_version: "1.0.0"
+

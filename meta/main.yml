@@ -24,4 +24,5 @@ galaxy_info:
 
 dependencies: 
   - role: andrewrothstein.node-n 
+    version: 1.1.1
 

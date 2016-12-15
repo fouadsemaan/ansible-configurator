@@ -1,33 +1,9 @@
 ---
 - name: install node
-  command: /usr/local/n/bin/n 6.9.2
-- name: Create a temp directory to run the script
   become: true
   become_user: root
-  command: mktemp -d
-  register: result
-- name: debug
-  debug: msg="{{result.stdout}}/node_modules"
-- name: Create node_modules dir
+ command: /usr/local/n/bin/n 6.9.2
+- name: npm install application-configurator '{{configurator_version}}' 
   become: true
   become_user: root
-  file: path={{result.stdout}}/node_modules state=directory
-- name: Transfer the script
-  become: true
-  become_user: root
-  copy: src=npm_config_client.js dest={{result.stdout}} mode=0777
-- name: npm init
-  become: true
-  become_user: root
-  command: npm init -y chdir={{result.stdout}}
-- name: Download npm libraries
-  become: true
-  become_user: root
-  command: "{{item}}"
-  with_items:
-    - npm install --prefix {{result.stdout}} cloud-config-client  --save
-    - npm install --prefix {{result.stdout}} minimist --save
-    - npm install --prefix {{result.stdout}} mkdirp --save
-    - npm install --prefix {{result.stdout}} handlebars --save
-- name: Execute the script
-  command: node {{result.stdout}}/npm_config_client.js --folder '{{dir}}' --application_name '{{application_name}}' --properties_file '{{properties_file}}' --template '{{template}}' --config_server_ip '{{config_server_ip}}'
+  command: /usr/local/n/bin/npm install application-configurator@'{{configurator_version}}' -g
