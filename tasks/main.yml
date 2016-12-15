@@ -1,8 +1,8 @@
 ---
-- name: install node
-  become: true
-  become_user: root
-  command: /usr/bin/n 6.9.2
+#- name: install node
+#  become: true
+#  become_user: root
+#  command: /usr/bin/n 6.9.2
 - name: npm install application-configurator '{{configurator_version}}' 
   become: true
   become_user: root
